@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Personal from './components/PersonalInfo';
+import Bill from './components/Billing/Bill';
+import Pay from './components/Payment/Payment';
+import Error from './components/Error/404';
+import Navbar from './components/Navbar/Navbar';
+import { Route, Switch } from 'react-router-dom';
+import './index.css';
+import GlobalStyle from './GlobalStyle';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <Navbar />
+      <Switch>
+        <Route exact path='/' component={Personal} />
+        <Route path='/bill' component={Bill} />
+        <Route path='/pay' component={Pay} />
+        <Route component={Error} />
+      </Switch>
+    </>
   );
 }
 
